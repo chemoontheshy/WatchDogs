@@ -65,10 +65,7 @@ int vsnc::vdc::ProcessMonitor::RunProcessMonitor()
 		}
 		Sleep(m_iScanningTime*1000);
 		std::cout << num++ << std::endl;
-		/*if (num > 30)
-		{
-			break;
-		}*/
+
 	}
 
 	
