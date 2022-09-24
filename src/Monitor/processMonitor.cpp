@@ -2,11 +2,6 @@
 #include <windows.h>
 #include <Tlhelp32.h>
 
-void vsnc::vdc::ProcessMonitor::Init(std::list<ProcessParam>& lstProcessParams)
-{
-	m_lstProcessParams.swap(lstProcessParams);
-}
-
 int vsnc::vdc::ProcessMonitor::RunProcessMonitor()
 {
 	// 检测是否有监控的程序，如果没有直接返回
@@ -41,6 +36,7 @@ int vsnc::vdc::ProcessMonitor::RunProcessMonitor()
 						RerunningProcess(processParam.strProcessRunningPath, processParam.strProcessArg);
 						processParam.iPid = GetProcessPids(processParam.strProcessName);
 						processParam.iScanningJudgmentNumber = m_iScanningJudgmentNumber;
+						std::cout << "processParam.iScanningJudgmentNumber" << processParam.iScanningJudgmentNumber << std::endl;
 						processParam.iRestartTime++;
 						std::cout << "restart exe: " << processParam.strProcessName << " path: " << processParam.strProcessRunningPath << std::endl;
 					}
@@ -67,7 +63,7 @@ int vsnc::vdc::ProcessMonitor::RunProcessMonitor()
 				}
 			}
 		}
-		Sleep(1000);
+		Sleep(m_iScanningTime*1000);
 		std::cout << num++ << std::endl;
 		/*if (num > 30)
 		{

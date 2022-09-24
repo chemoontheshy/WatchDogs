@@ -3,15 +3,17 @@
 
 int main()
 {
-	vsnc::vdc::ProcessMonitor monitor;
-	std::cout << "start" << std::endl;
-	std::list<vsnc::vdc::ProcessParam> lstProcessParams;
 	vsnc::vdc::ProcessParam testProcess;
 	testProcess.iNo = 1;
 	testProcess.strProcessRunningPath = "D:/Code/qt/Btest/debug/Btest.exe";
 	testProcess.strProcessName = "Btest.exe";
-	lstProcessParams.push_back(testProcess);
-	monitor.Init(lstProcessParams);
+	
+	vsnc::vdc::MonitorParams param;
+	param.iScanningJudgmentNumber = 3;
+	param.iScanningTime = 1;
+	param.lstProcessParams.push_back(testProcess);
+	vsnc::vdc::ProcessMonitor monitor(param);
+	std::cout << "start" << std::endl;
 	monitor.RunProcessMonitor();
 	std::cout << "wait over" << std::endl;
 	monitor.StopAllProcess();

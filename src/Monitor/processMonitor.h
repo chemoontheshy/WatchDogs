@@ -39,16 +39,24 @@ namespace vsnc
 			}
 		};
 
+		struct MonitorParams
+		{
+			int iScanningJudgmentNumber;
+			int iScanningTime;
+			std::list<ProcessParam> lstProcessParams;
+
+		};
+
 		class ProcessMonitor
 		{
 		public:
-			ProcessMonitor() :m_bIsRunning(true),
-				m_iScanningJudgmentNumber(0),
-				m_iScanningTime(0) {}
+			ProcessMonitor(MonitorParams param) :m_bIsRunning(true),
+				m_iScanningJudgmentNumber(param.iScanningJudgmentNumber),
+				m_iScanningTime(param.iScanningTime),
+				m_lstProcessParams(param.lstProcessParams){}
 			~ProcessMonitor() {}
 
-			void Init(std::list<ProcessParam>& lstProcessParams);
-			int RunProcessMonitor();
+			int  RunProcessMonitor();
 			void StopProcessMonitor();
 			void StopAllProcess();
 		private:
