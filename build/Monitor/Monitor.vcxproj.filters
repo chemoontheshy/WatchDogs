@@ -6,5 +6,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\Monitor\processMonitor.h" />
+    <ClInclude Include="..\..\src\Monitor\structer.h" />
   </ItemGroup>
 </Project>
